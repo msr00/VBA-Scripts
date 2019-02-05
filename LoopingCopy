@@ -1,0 +1,151 @@
+'Max J Gardner
+'Copying cells to another sheet via looping through multiple files.
+'BWH Radiation Oncology
+'02/04/2019
+
+Option Explicit
+
+Sub ImportFTEs()
+
+    Application.ScreenUpdating = False
+    Application.EnableEvents = False
+    
+        Dim ws As Integer
+
+        Workbooks.Open Filename:=ActiveWorkbook.Path & "\6620\FY19*.xlsb"
+            For ws = 1 To Worksheets.Count
+                Sheets(ws).Name = "Sheet1"
+            Next ws
+
+            Dim i_6620 As Integer
+            Dim j_6620 As Integer
+            Dim lastRow_6620 As Integer
+                lastRow_6620 = Cells(Rows.Count, "D").End(xlUp).Row
+            Dim wb_6620 As Worksheet
+                Set wb_6620 = Workbooks.Open(ActiveWorkbook.Path & "\FY19*.xlsb").Sheets("Sheet1")
+            Dim wb_results As Worksheet
+                Set wb_results = ThisWorkbook.Sheets("B")
+            Dim sumRange_6620 As Range
+                Set sumRange_6620 = wb_6620.Range("X:X")
+            Dim cRange1_6620 As Range
+                Set cRange1_6620 = wb_6620.Range("D:D")
+            Dim criteria1_6620 As Range
+            Dim cRange2_6620 As Range
+                Set cRange2_6620 = wb_6620.Range("S:S")
+            Dim criteria2_6620 As Range
+            Dim cRange3_6620 As Range
+                Set cRange3_6620 = wb_6620.Range("T:T")
+            Dim criteria3_6620 As String
+                Let criteria3_6620 = "BASE"
+                For i_6620 = 7 To 18
+                    Set criteria1_6620 = wb_results.Cells(7, i_6620)
+                    For j_6620 = 8 To 18
+                        Set criteria2_6620 = wb_results.Cells(j_6620, 6)
+                        wb_results.Cells(j_6620, i_6620).value = Application.WorksheetFunction.SumIfs(sumRange_6620, cRange1_6620, criteria1_6620, cRange2_6620, criteria2_6620, cRange3_6620, criteria3_6620)
+                    Next j_6620
+                Next i_6620
+                
+        ActiveWorkbook.Close savechanges:=True
+
+        Workbooks.Open Filename:=ActiveWorkbook.Path & "\6621\FY19*.xlsb"
+            For ws = 1 To Worksheets.Count
+                Sheets(ws).Name = "Sheet1"
+            Next ws
+
+            Dim i_6621 As Integer
+            Dim j_6621 As Integer
+            Dim lastRow_6621 As Integer
+                lastRow_6621 = Cells(Rows.Count, "D").End(xlUp).Row
+            Dim wb_6621 As Worksheet
+                Set wb_6621 = Workbooks.Open(ActiveWorkbook.Path & "\FY19*.xlsb").Sheets("Sheet1")
+            Dim sumRange_6621 As Range
+                Set sumRange_6621 = wb_6621.Range("X:X")
+            Dim cRange1_6621 As Range
+                Set cRange1_6621 = wb_6621.Range("D:D")
+            Dim criteria1_6621 As Range
+            Dim cRange2_6621 As Range
+                Set cRange2_6621 = wb_6621.Range("S:S")
+            Dim criteria2_6621 As Range
+            Dim cRange3_6621 As Range
+                Set cRange3_6621 = wb_6621.Range("T:T")
+            Dim criteria3_6621 As String
+                Let criteria3_6621 = "BASE"
+                For i_6621 = 7 To 18
+                    Set criteria1_6621 = wb_results.Cells(22, i_6621)
+                    For j_6621 = 23 To 26
+                        Set criteria2_6621 = wb_results.Cells(j_6621, 6)
+                        wb_results.Cells(j_6621, i_6621).value = Application.WorksheetFunction.SumIfs(sumRange_6621, cRange1_6621, criteria1_6621, cRange2_6621, criteria2_6621, cRange3_6621, criteria3_6621)
+                    Next j_6621
+                Next i_6621
+                
+'            Dim d_6621 As Integer
+'                For d_6621 = 7 To 18
+'                    Set wb_results.Cells(25, d_6621).value = wb_results.Cells(25, d_6621).value / 2
+'                Next d_6621
+                
+        ActiveWorkbook.Close savechanges:=True
+        
+        Workbooks.Open Filename:=ActiveWorkbook.Path & "\7122\FY19*.xlsb"
+            For ws = 1 To Worksheets.Count
+                Sheets(ws).Name = "Sheet1"
+            Next ws
+
+            Dim i_7122 As Integer
+            Dim lastRow_7122 As Integer
+                lastRow_7122 = Cells(Rows.Count, "D").End(xlUp).Row
+            Dim wb_7122 As Worksheet
+                Set wb_7122 = Workbooks.Open(ActiveWorkbook.Path & "\FY19*.xlsb").Sheets("Sheet1")
+            Dim sumRange_7122 As Range
+                Set sumRange_7122 = wb_7122.Range("X:X")
+            Dim cRange1_7122 As Range
+                Set cRange1_7122 = wb_7122.Range("D:D")
+            Dim criteria1_7122 As Range
+            Dim cRange2_7122 As Range
+                Set cRange2_7122 = wb_7122.Range("S:S")
+            Dim criteria2_7122 As Range
+            Dim cRange3_7122 As Range
+                Set cRange3_7122 = wb_7122.Range("T:T")
+            Dim criteria3_7122 As String
+                Let criteria3_7122 = "BASE"
+                For i_7122 = 7 To 18
+                    Set criteria1_7122 = wb_results.Cells(32, i_7122)
+                    Set criteria2_7122 = wb_results.Cells(33, 6)
+                        wb_results.Cells(33, i_7122).value = Application.WorksheetFunction.SumIfs(sumRange_7122, cRange1_7122, criteria1_7122, cRange2_7122, criteria2_7122, cRange3_7122, criteria3_7122)
+                Next i_7122
+                
+        ActiveWorkbook.Close savechanges:=True
+        
+        Workbooks.Open Filename:=ActiveWorkbook.Path & "\7125\FY19*.xlsb"
+            For ws = 1 To Worksheets.Count
+                Sheets(ws).Name = "Sheet1"
+            Next ws
+
+            Dim i_7125 As Integer
+            Dim lastRow_7125 As Integer
+                lastRow_7125 = Cells(Rows.Count, "D").End(xlUp).Row
+            Dim wb_7125 As Worksheet
+                Set wb_7125 = Workbooks.Open(ActiveWorkbook.Path & "\FY19*.xlsb").Sheets("Sheet1")
+            Dim sumRange_7125 As Range
+                Set sumRange_7125 = wb_7125.Range("X:X")
+            Dim cRange1_7125 As Range
+                Set cRange1_7125 = wb_7125.Range("D:D")
+            Dim criteria1_7125 As Range
+            Dim cRange2_7125 As Range
+                Set cRange2_7125 = wb_7125.Range("S:S")
+            Dim criteria2_7125 As Range
+            Dim cRange3_7125 As Range
+                Set cRange3_7125 = wb_7125.Range("T:T")
+            Dim criteria3_7125 As String
+                Let criteria3_7125 = "BASE"
+                For i_7125 = 7 To 18
+                    Set criteria1_7125 = wb_results.Cells(37, i_7125)
+                        Set criteria2_7125 = wb_results.Cells(38, 6)
+                        wb_results.Cells(38, i_7125).value = Application.WorksheetFunction.SumIfs(sumRange_7125, cRange1_7125, criteria1_7125, cRange2_7125, criteria2_7125, cRange3_7125, criteria3_7125)
+                Next i_7125
+                
+    ActiveWorkbook.Close savechanges:=True
+    
+    Application.ScreenUpdating = True
+    Application.EnableEvents = True
+
+End Sub
